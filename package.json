@@ -1,0 +1,23 @@
+{
+  "name": "protract-gulp-boilerplate",
+  "version": "1.0.0",
+  "description": "Test Automation framework with protractorjs and gulp task runner.",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "chance": "^0.7.5",
+    "eslint": "3.5.0",
+    "jasmine-spec-reporter": "^2.4.0",
+    "gulp": "3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-protractor": "^3.0.0",
+    "protractor": "^4.0.1",
+    "yargs": "5.0.0"
+  }
+}
