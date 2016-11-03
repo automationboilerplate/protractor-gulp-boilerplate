@@ -1,7 +1,7 @@
 describe("Angular Application protractortest App", () => {
 
     beforeEach(() => {
-        //setting ignoreSynchronization property to true will help the protractor tests not to wait for Angular app.
+        //ignoreSynchronization to false will synchronize for angular app.
       return browser.ignoreSynchronization = false;
     });
 
