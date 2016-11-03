@@ -5,7 +5,7 @@ describe("Angular Application protractortest App", () => {
       return browser.ignoreSynchronization = false;
     });
 
-    it("Search by a keyword", () => {
+    it("Protractor click on github button", () => {
         browser.get("http://protractortest.org");
         element(by.css('.github-button')).click();
         browser.sleep(3000);

@@ -7,8 +7,6 @@ module.exports = function(opts) {
 
   gulp.task('e2e', function() {
 
-    var cliArgs = [];
-
     [
       'browser', //capabilities.browserName
       'baseUrl',
@@ -25,19 +23,21 @@ module.exports = function(opts) {
       'explorer', //'elementExplorer
     ].forEach(function(name) {
         if(args[name]) {
+          // Having the args in an environment variable to use inside the test.
             process.env[name] = args[name];
-            cliArgs[name] = args[name];
         }
     });
-
-    process.env.test_env = args.testEnv;
-    process.env.sel_grid = args.selGrid;
-    //argument for the Feature toggling functionality.
-    process.env.featureToggle = args.featureToggle;
 
     return gulp.src([])
         .pipe(protractor({
             configFile: __dirname + '/protractor.conf.js',
+            args: [
+              '--browser', args.browser,    // Passing the args to the protractor. Add if you want any more args.
+              '--baseUrl', args.baseUrl,
+              '--seleniumAddress', args.seleniumAddress,
+              '--maxInstances', args.maxInstances,
+              '--grep', args.grep
+            ]
         }))
         .on('error', function(e) { throw e })
     });

@@ -3,19 +3,26 @@ exports.config = {
   directConnect: false,
 
   // Capabilities to be passed to the webdriver instance.
-  capabilities: {
-    'browserName': 'chrome',
-    chromeOptions: {
-      args: ['--disable-extensions']
-    },
-    'command-timeout': '30000'
-    },
+   capabilities: {
+     'browserName': 'chrome',
+     'shardTestFiles': true,
+     'maxInstances': 2,
+     chromeOptions: {
+       args: ['--disable-extensions', '--start-maximized']
+     }
+   },
+
   // Determine the address of the Selenium Grid server.
   seleniumAddress: 'http://localhost:4444/wd/hub',
 
   // Framework to use. Jasmine is recommended.
   framework: 'jasmine2',
 
+  onPrepare: () => {
+     var SpecReporter = require('jasmine-spec-reporter');
+     // add jasmine spec reporter
+     jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
+  },
   // Spec patterns are relative to the current working directory when
   // protractor is called.
   specs: ['tests/e2e/**/*.js'],
